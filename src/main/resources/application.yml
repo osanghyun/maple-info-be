@@ -1,2 +1,11 @@
+marinfo:
+  time-zone: 'Asia/Seoul'
+  nexon-open-api:
+    url: http://open.api.nexon.com
+    auth-header: x-nxopen-api-key
+    auth-key: test_f5d213d4034a01f2df92746ab84981ed028416a5e5fd41700fcd1321af6fdee932187af0d94e40358cbea79cfa7f488f
 server:
   port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
