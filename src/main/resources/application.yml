@@ -3,7 +3,7 @@ marinfo:
   nexon-open-api:
     url: http://open.api.nexon.com
     auth-header: x-nxopen-api-key
-    auth-key: test_f5d213d4034a01f2df92746ab84981ed028416a5e5fd41700fcd1321af6fdee932187af0d94e40358cbea79cfa7f488f
+    auth-key: test_b418572c77e487aaddde3f8a077c03de124a0bf2eea0c29fdee4cf39bac5fa1b200efe6570cbd6c863ef8fdd4b46a849
 server:
   port: 8080
   servlet:
