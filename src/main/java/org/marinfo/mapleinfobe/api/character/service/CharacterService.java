@@ -7,9 +7,9 @@ import org.marinfo.mapleinfobe.api.character.search.CharacterSearch;
 import org.marinfo.mapleinfobe.api.character.vo.CharacterBasic;
 import org.marinfo.mapleinfobe.api.character.vo.CharacterOcid;
 import org.marinfo.mapleinfobe.api.character.vo.CharacterStat;
+import org.marinfo.mapleinfobe.api.character.vo.CharacterVmatrix;
 import org.marinfo.mapleinfobe.constant.UriPath;
 import org.marinfo.mapleinfobe.util.NexonOpenApiClientUtil;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -26,6 +26,10 @@ public class CharacterService {
 
     public CharacterStat getCharacterStat(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.CHARACTER_STAT, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterVmatrix getCharacterVmatrix(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.CHARACTER_VMATRIX, makeLatestSearchParams(characterName));
     }
 
     private MultiValueMap<String, String> makeLatestSearchParams(String characterName) {

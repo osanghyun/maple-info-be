@@ -9,4 +9,5 @@ public class UriPath {
     public static final String CHARACTER_OCID = PREFIX + "/id";
     public static final String CHARACTER_BASIC = PREFIX + "/character/basic";
     public static final String CHARACTER_STAT = PREFIX + "/character/stat";
+    public static final String CHARACTER_VMATRIX = PREFIX + "/character/vmatrix";
 }
