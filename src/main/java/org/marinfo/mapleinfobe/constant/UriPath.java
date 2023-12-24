@@ -7,4 +7,5 @@ import lombok.NoArgsConstructor;
 public class UriPath {
     private static final String PREFIX = "maplestory/v1";
     public static final String CHARACTER_OCID = PREFIX + "/id";
+    public static final String CHARACTER_BASIC = PREFIX + "/character/basic";
 }
