@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.marinfo.mapleinfobe.api.character.search.CharacterSearch;
 import org.marinfo.mapleinfobe.api.character.vo.CharacterBasic;
 import org.marinfo.mapleinfobe.api.character.vo.CharacterOcid;
+import org.marinfo.mapleinfobe.api.character.vo.CharacterStat;
 import org.marinfo.mapleinfobe.constant.UriPath;
 import org.marinfo.mapleinfobe.util.NexonOpenApiClientUtil;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,11 +21,17 @@ import org.springframework.util.MultiValueMap;
 public class CharacterService {
 
     public CharacterBasic getCharacterBasic(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.CHARACTER_BASIC, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterStat getCharacterStat(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.CHARACTER_STAT, makeLatestSearchParams(characterName));
+    }
+
+    private MultiValueMap<String, String> makeLatestSearchParams(String characterName) {
         var ocid = getCharacterOcid(characterName);
         var characterSearch = CharacterSearch.create(ocid);
-        var params = characterSearch.toMultiValueMap();
-
-        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.CHARACTER_BASIC, params);
+        return characterSearch.toMultiValueMap();
     }
 
     private String getCharacterOcid(@NotBlank String characterName) {
