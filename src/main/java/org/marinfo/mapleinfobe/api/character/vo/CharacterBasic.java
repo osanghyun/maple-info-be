@@ -18,8 +18,8 @@ public class CharacterBasic {
     private String characterGender;
     private String characterClass;
     private String characterClassLevel;
-    private String characterLevel;
-    private String characterExp;
+    private Long characterLevel;
+    private Long characterExp;
     private String characterExpRate;
     private String characterGuildName;
     private String characterImage;
