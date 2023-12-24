@@ -1,9 +1,10 @@
 package org.marinfo.mapleinfobe.api.character.controller;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
-import org.marinfo.mapleinfobe.api.character.dto.CharacterOcidRequest;
-import org.marinfo.mapleinfobe.api.character.dto.CharacterOcidResponse;
 import org.marinfo.mapleinfobe.api.character.service.CharacterService;
+import org.marinfo.mapleinfobe.api.character.vo.CharacterBasic;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class CharacterController {
     private final CharacterService characterService;
 
-    @GetMapping("/ocid")
-    public CharacterOcidResponse getCharacterOcid(@ModelAttribute CharacterOcidRequest request) {
-        return characterService.getCharacterOcid(request);
+    @GetMapping("/basic")
+    public ResponseEntity<CharacterBasic> getCharacterBasic(@RequestParam @NotBlank String characterName) {
+        var result = characterService.getCharacterBasic(characterName);
+        return ResponseEntity.ok(result);
     }
 
 }
