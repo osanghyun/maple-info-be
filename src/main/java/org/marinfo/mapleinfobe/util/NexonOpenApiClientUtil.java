@@ -14,11 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
+import java.net.URLEncoder;
 import java.time.Duration;
 
 @Slf4j
@@ -81,11 +83,19 @@ public class NexonOpenApiClientUtil {
 
         return WebClient.builder()
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .filter(logRequest())
                 .build();
     }
 
     private static void errorResponseLogger(HttpMethod httpMethod, String url, String errorName, String message) {
         log.error("\n====================================================================================================\nUri : {}) {}\nerrorName: {}\nmessage : {}\n====================================================================================================", new Object[]{httpMethod, url, errorName, message});
+    }
+
+    private static ExchangeFilterFunction logRequest() {
+        return ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
+            log.info("\n====================================================================================================\nUri : {}) {}\nHeader: {}\n====================================================================================================", new Object[]{clientRequest.method(), clientRequest.url(), clientRequest.headers()});
+            return Mono.just(clientRequest);
+        });
     }
 
 }
