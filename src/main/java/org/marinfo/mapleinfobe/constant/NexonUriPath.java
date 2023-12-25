@@ -25,4 +25,7 @@ public class NexonUriPath {
 
     // GUILD
     public static final String GUILD_BASIC = PREFIX + "/guild/basic";
+
+    // RANK
+    public static final String RANK_OVERALL = PREFIX + "/ranking/overall";
 }

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.marinfo.mapleinfobe.nexon.dto.*;
 import org.marinfo.mapleinfobe.nexon.service.CharacterService;
 import org.marinfo.mapleinfobe.nexon.service.GuildService;
+import org.marinfo.mapleinfobe.nexon.service.RankService;
 import org.marinfo.mapleinfobe.nexon.service.UnionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class NexonController {
     private final CharacterService characterService;
     private final GuildService guildService;
     private final UnionService unionService;
+    private final RankService rankService;
 
     // CHARACTER
     @GetMapping("/character/basic")
@@ -78,5 +80,11 @@ public class NexonController {
         return ResponseEntity.ok(result);
     }
 
+    // RANK
+    @GetMapping("/rank/overall")
+    public ResponseEntity<Ranking> getCharacterRankOverall(@RequestParam @NotBlank String characterName) {
+        var result = rankService.getCharacterRankOverall(characterName);
+        return ResponseEntity.ok(result);
+    }
 
 }
