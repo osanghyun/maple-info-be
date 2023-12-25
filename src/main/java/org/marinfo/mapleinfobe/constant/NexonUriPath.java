@@ -14,7 +14,10 @@ public class NexonUriPath {
     // CHARACTER
     public static final String CHARACTER_BASIC = PREFIX + "/character/basic";
     public static final String CHARACTER_STAT = PREFIX + "/character/stat";
+    public static final String CHARACTER_HYPER_STAT = PREFIX + "/character/hyper-stat";
+    public static final String CHARACTER_ITEM_EQUIPMENT = PREFIX + "/character/item-equipment";
     public static final String CHARACTER_VMATRIX = PREFIX + "/character/vmatrix";
+    public static final String CHARACTER_LINK_SKILL = PREFIX + "/character/link-skill";
 
     // UNION
     public static final String UNION = PREFIX + "/user/union";

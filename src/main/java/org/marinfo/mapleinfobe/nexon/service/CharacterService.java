@@ -2,10 +2,8 @@ package org.marinfo.mapleinfobe.nexon.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.marinfo.mapleinfobe.nexon.dto.*;
 import org.marinfo.mapleinfobe.nexon.search.NexonOcidSearch;
-import org.marinfo.mapleinfobe.nexon.dto.CharacterBasic;
-import org.marinfo.mapleinfobe.nexon.dto.CharacterStat;
-import org.marinfo.mapleinfobe.nexon.dto.CharacterVmatrix;
 import org.marinfo.mapleinfobe.constant.NexonUriPath;
 import org.marinfo.mapleinfobe.util.NexonOpenApiClientUtil;
 import org.springframework.core.ParameterizedTypeReference;
@@ -24,6 +22,18 @@ public class CharacterService {
 
     public CharacterStat getCharacterStat(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_STAT, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterHyperStat getCharacterHyperStat(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_HYPER_STAT, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterItemEquipment getCharacterItemEquipment(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_ITEM_EQUIPMENT, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterLinkSkill getCharacterLinkSkill(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_LINK_SKILL, makeLatestSearchParams(characterName));
     }
 
     public CharacterVmatrix getCharacterVmatrix(String characterName) {
