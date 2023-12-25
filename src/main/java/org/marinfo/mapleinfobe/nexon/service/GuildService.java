@@ -1,10 +1,10 @@
-package org.marinfo.mapleinfobe.api.guild.service;
+package org.marinfo.mapleinfobe.nexon.service;
 
 import jakarta.validation.constraints.NotBlank;
-import org.marinfo.mapleinfobe.api.guild.search.GuildSearch;
-import org.marinfo.mapleinfobe.api.guild.vo.GuildBasic;
-import org.marinfo.mapleinfobe.api.guild.vo.OguildId;
-import org.marinfo.mapleinfobe.constant.UriPath;
+import org.marinfo.mapleinfobe.nexon.search.NexonOguildIdSearch;
+import org.marinfo.mapleinfobe.nexon.dto.GuildBasic;
+import org.marinfo.mapleinfobe.nexon.dto.OguildId;
+import org.marinfo.mapleinfobe.constant.NexonUriPath;
 import org.marinfo.mapleinfobe.util.NexonOpenApiClientUtil;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ public class GuildService {
 
 
     public GuildBasic getGuildBasic(String guildName, String worldName) {
-        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.GUILD_BASIC, makeLatestSearchParams(guildName, worldName));
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.GUILD_BASIC, makeLatestSearchParams(guildName, worldName));
     }
 
     private MultiValueMap<String, String> makeLatestSearchParams(String guildName, String worldName) {
         var oguildId = getOguildId(guildName, worldName);
-        var guildSearch = GuildSearch.create(oguildId);
+        var guildSearch = NexonOguildIdSearch.create(oguildId);
         return guildSearch.toMultiValueMap();
     }
 
@@ -29,7 +29,7 @@ public class GuildService {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.set("guild_name", guildName);
         params.set("world_name", worldName);
-        OguildId result = NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, UriPath.GUILD_ID, params);
+        OguildId result = NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.GUILD_ID, params);
         return result.getOguildId();
     }
 }

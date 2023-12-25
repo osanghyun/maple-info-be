@@ -1,10 +1,7 @@
-package org.marinfo.mapleinfobe.api.guild.search;
+package org.marinfo.mapleinfobe.nexon.search;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.marinfo.mapleinfobe.util.DateTimeUil;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -12,30 +9,31 @@ import org.springframework.util.MultiValueMap;
 @Getter
 @ToString
 @NoArgsConstructor
-public class GuildSearch {
-    private String oguildId;
+public class NexonOcidSearch {
+    private String ocid;
     private String date;
 
-    public static GuildSearch create(@NotBlank String oguildId) {
-        var guildSearch = new GuildSearch();
+    public static NexonOcidSearch create(@NotBlank String ocid) {
+        var characterSearch = new NexonOcidSearch();
 
-        guildSearch.setOguildId(oguildId);
-        guildSearch.setDate();
+        characterSearch.setOcid(ocid);
+        characterSearch.setDate();
 
-        return guildSearch;
+        return characterSearch;
     }
 
     public MultiValueMap<String, String> toMultiValueMap() {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.set("oguild_id", oguildId);
+        params.set("ocid", ocid);
         params.set("date", date);
 
         return params;
     }
 
-    private void setOguildId(String oguildId) {
-        this.oguildId = oguildId;
+    private void setOcid(String ocid) {
+        this.ocid = ocid;
     }
+
     private void setDate() {
         this.date = DateTimeUil.getCharacterSearchLatestDate();
     }

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice(basePackages = "org.marinfo.mapleinfobe", annotations = RestController.class)
 public class ControllerAdvisor {
 
-    @ExceptionHandler(OpenApiException.class)
-    public ResponseEntity<OpenApiErrorResult> handleOpenApiException(OpenApiException e) {
+    @ExceptionHandler(NexonOpenApiException.class)
+    public ResponseEntity<NexonOpenApiErrorResult> handleOpenApiException(NexonOpenApiException e) {
         log.error("OpenApiException : {}", e.getLocalizedMessage());
-        return ResponseEntity.badRequest().body(new OpenApiErrorResult(e.getName(), e.getMessage()));
+        return ResponseEntity.badRequest().body(new NexonOpenApiErrorResult(e.getName(), e.getMessage()));
     }
 }

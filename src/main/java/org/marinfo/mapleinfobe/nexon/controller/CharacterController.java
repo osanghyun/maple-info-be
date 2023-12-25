@@ -1,11 +1,11 @@
-package org.marinfo.mapleinfobe.api.character.controller;
+package org.marinfo.mapleinfobe.nexon.controller;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
-import org.marinfo.mapleinfobe.api.character.service.CharacterService;
-import org.marinfo.mapleinfobe.api.character.vo.CharacterBasic;
-import org.marinfo.mapleinfobe.api.character.vo.CharacterStat;
-import org.marinfo.mapleinfobe.api.character.vo.CharacterVmatrix;
+import org.marinfo.mapleinfobe.nexon.service.CharacterService;
+import org.marinfo.mapleinfobe.nexon.dto.CharacterBasic;
+import org.marinfo.mapleinfobe.nexon.dto.CharacterStat;
+import org.marinfo.mapleinfobe.nexon.dto.CharacterVmatrix;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

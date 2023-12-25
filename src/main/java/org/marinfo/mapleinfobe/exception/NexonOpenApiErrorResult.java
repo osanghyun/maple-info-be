@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OpenApiErrorResult {
+public class NexonOpenApiErrorResult {
     private String name;
     private String message;
 }

@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class UriPath {
+public class NexonUriPath {
     private static final String PREFIX = "maplestory/v1";
     public static final String CHARACTER_OCID = PREFIX + "/id";
     public static final String CHARACTER_BASIC = PREFIX + "/character/basic";

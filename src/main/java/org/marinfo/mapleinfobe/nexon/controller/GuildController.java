@@ -1,9 +1,9 @@
-package org.marinfo.mapleinfobe.api.guild.controller;
+package org.marinfo.mapleinfobe.nexon.controller;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
-import org.marinfo.mapleinfobe.api.guild.service.GuildService;
-import org.marinfo.mapleinfobe.api.guild.vo.GuildBasic;
+import org.marinfo.mapleinfobe.nexon.service.GuildService;
+import org.marinfo.mapleinfobe.nexon.dto.GuildBasic;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

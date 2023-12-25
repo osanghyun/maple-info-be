@@ -1,4 +1,4 @@
-package org.marinfo.mapleinfobe.api.character.vo;
+package org.marinfo.mapleinfobe.nexon.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonAlias;

@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.marinfo.mapleinfobe.MapleInfoBeApplication;
-import org.marinfo.mapleinfobe.exception.OpenApiException;
+import org.marinfo.mapleinfobe.exception.NexonOpenApiException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,6 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
-import java.net.URLEncoder;
 import java.time.Duration;
 
 @Slf4j
@@ -52,12 +51,12 @@ public class NexonOpenApiClientUtil {
                             var message = errorResult.getError().getMessage();
                             var name = errorResult.getError().getName();
                             errorResponseLogger(HttpMethod.GET, uri, name, message);
-                            return Mono.error(new OpenApiException(name, message));
+                            return Mono.error(new NexonOpenApiException(name, message));
                         });
                     }
                 })
                 .blockOptional()
-                .orElseThrow(OpenApiException::new);
+                .orElseThrow(NexonOpenApiException::new);
     }
 
     @Getter
