@@ -28,6 +28,10 @@ public class CharacterService {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_HYPER_STAT, makeLatestSearchParams(characterName));
     }
 
+    public CharacterItemEquipment getCharacterItemEquipment(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_ITEM_EQUIPMENT, makeLatestSearchParams(characterName));
+    }
+
     public CharacterLinkSkill getCharacterLinkSkill(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_LINK_SKILL, makeLatestSearchParams(characterName));
     }
