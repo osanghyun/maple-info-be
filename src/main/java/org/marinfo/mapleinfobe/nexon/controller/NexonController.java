@@ -39,6 +39,12 @@ public class NexonController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/character/link-skill")
+    public ResponseEntity<CharacterLinkSkill> getCharacterLinkSkill(@RequestParam @NotBlank String characterName) {
+        var result = characterService.getCharacterLinkSkill(characterName);
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("/character/vmatrix")
     public ResponseEntity<CharacterVmatrix> getCharacterVmatrix(@RequestParam @NotBlank String characterName) {
         var result = characterService.getCharacterVmatrix(characterName);
