@@ -2,6 +2,7 @@ package org.marinfo.mapleinfobe.nexon.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.marinfo.mapleinfobe.nexon.dto.CharacterHyperStat;
 import org.marinfo.mapleinfobe.nexon.search.NexonOcidSearch;
 import org.marinfo.mapleinfobe.nexon.dto.CharacterBasic;
 import org.marinfo.mapleinfobe.nexon.dto.CharacterStat;
@@ -24,6 +25,10 @@ public class CharacterService {
 
     public CharacterStat getCharacterStat(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_STAT, makeLatestSearchParams(characterName));
+    }
+
+    public CharacterHyperStat getCharacterHyperStat(String characterName) {
+        return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_HYPER_STAT, makeLatestSearchParams(characterName));
     }
 
     public CharacterVmatrix getCharacterVmatrix(String characterName) {

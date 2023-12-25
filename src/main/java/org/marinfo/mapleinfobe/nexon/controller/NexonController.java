@@ -33,6 +33,12 @@ public class NexonController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/character/hyper-stat")
+    public ResponseEntity<CharacterHyperStat> getCharacterHyperStat(@RequestParam @NotBlank String characterName) {
+        var result = characterService.getCharacterHyperStat(characterName);
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("/character/vmatrix")
     public ResponseEntity<CharacterVmatrix> getCharacterVmatrix(@RequestParam @NotBlank String characterName) {
         var result = characterService.getCharacterVmatrix(characterName);
