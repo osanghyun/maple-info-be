@@ -9,3 +9,13 @@ server:
   servlet:
     encoding:
       charset: UTF-8
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/maple_info
+    username: maple
+    password: new1234!
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
