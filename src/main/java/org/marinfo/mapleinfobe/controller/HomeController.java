@@ -1,4 +1,4 @@
-package org.marinfo.mapleinfobe.nexon.controller;
+package org.marinfo.mapleinfobe.controller;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Builder;

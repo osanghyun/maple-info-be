@@ -12,8 +12,8 @@ import org.springframework.util.MultiValueMap;
 
 @Service
 @RequiredArgsConstructor
-public class UnionService {
-    private final IdentifyService identifyService;
+public class NexonUnionService {
+    private final NexonIdentifyService nexonIdentifyService;
 
     public UnionBasic getUnionBasic(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.UNION, makeLatestSearchParams(characterName));
@@ -25,7 +25,7 @@ public class UnionService {
 
 
     private MultiValueMap<String, String> makeLatestSearchParams(String characterName) {
-        var ocid = identifyService.getOcid(characterName);
+        var ocid = nexonIdentifyService.getOcid(characterName);
         var nexonOcidSearch = NexonOcidSearch.create(ocid);
         return nexonOcidSearch.toMultiValueMap();
     }

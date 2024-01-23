@@ -11,8 +11,8 @@ import org.springframework.util.MultiValueMap;
 
 @Service
 @RequiredArgsConstructor
-public class GuildService {
-    private final IdentifyService identifyService;
+public class NexonGuildService {
+    private final NexonIdentifyService nexonIdentifyService;
 
 
     public GuildBasic getGuildBasic(String guildName, String worldName) {
@@ -20,7 +20,7 @@ public class GuildService {
     }
 
     private MultiValueMap<String, String> makeLatestSearchParams(String guildName, String worldName) {
-        var oguildId = identifyService.getOguildId(guildName, worldName);
+        var oguildId = nexonIdentifyService.getOguildId(guildName, worldName);
         var nexonOguildIdSearch = NexonOguildIdSearch.create(oguildId);
         return nexonOguildIdSearch.toMultiValueMap();
     }

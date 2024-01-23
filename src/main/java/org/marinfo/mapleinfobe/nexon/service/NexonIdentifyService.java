@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class IdentifyService {
+public class NexonIdentifyService {
 
     private final CharacterOcidRepository characterOcidRepository;
 

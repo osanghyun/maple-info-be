@@ -13,8 +13,8 @@ import org.springframework.util.MultiValueMap;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CharacterService {
-    private final IdentifyService identifyService;
+public class NexonCharacterService {
+    private final NexonIdentifyService nexonIdentifyService;
 
     public CharacterBasic getCharacterBasic(String characterName) {
         return NexonOpenApiClientUtil.httpGetRequest(new ParameterizedTypeReference<>() {}, NexonUriPath.CHARACTER_BASIC, makeLatestSearchParams(characterName));
@@ -41,7 +41,7 @@ public class CharacterService {
     }
 
     private MultiValueMap<String, String> makeLatestSearchParams(String characterName) {
-        var ocid = identifyService.getOcid(characterName);
+        var ocid = nexonIdentifyService.getOcid(characterName);
         var nexonOcidSearch = NexonOcidSearch.create(ocid);
         return nexonOcidSearch.toMultiValueMap();
     }
